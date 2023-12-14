@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="../static/css/setupstyle.css">
+    <title>Customise Profile</title>
+</head>
+<body>     
+    <div class="tab-container">
+        <div class="tab">
+          <button class="tab-button active" onclick="openTab(event, 'tab1')">Customise Profile</button>
+        </div>
+      </div>
+      <div id="tab1" class="tab-content">
+        <form class = "form" action="#" method="post">
+        {{form1.hidden_tag()}}
+        <a>
+        {% for message in get_flashed_messages() %}
+          {{message}}
+        {% endfor %}
+        </a>
+        <div class = "form-group">
+        <label for="username">First Name:</label>
+        {{ form1.firstName(type = "text") }}       
+        <label for="password">Second Name:</label>
+        {{ form1.secondName(type = "text") }}    
+        </div>
+        <div class = "form-group">
+        <label for="weight">Weight (kg):</label>
+        {{ form1.weight(type = "number") }}           
+        <label for="height">Height (cm):</label>
+        {{ form1.height(type = "number") }} 
+        </div>
+        <div class = "form-group">
+        <label for="squat">Squat (kg):</label>
+        {{ form1.squat(type = "number") }}    
+        <label for="bench">Bench (kg):</label>
+        {{ form1.bench(type = "number") }}
+        <label for="deadlift">Deadlift (kg):</label>
+        {{ form1.deadlift(type = "number") }}   
+        </div>
+        {{form1.submit()}}
+        </form>
+      </div>
+
+      <script src="../static/js/tab.js"></script>
+
+</body>
+</html>
+        

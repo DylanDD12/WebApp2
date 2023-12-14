@@ -1,0 +1,169 @@
+.tab-container {
+    display: flex;
+    justify-content: space-between; /* Center and space evenly horizontally */
+    width: 25%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+    border: none;
+    box-shadow: 0px 0px 5px #3b3b3b;
+    background-color: rgba(255,255,255,0.25);
+  }
+  
+  .tab {
+    flex: 1;
+    text-align: center; /* Center the text inside the tabs */
+  }
+  
+  .tab-button {
+    background-color: transparent;
+    font-family: 'Lexend Zetta', sans-serif; /* Add your desired font-family */
+    font-size: 1.5vw; /* Add your desired font size */
+    color: #000;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 1% 2%;
+    margin: 2%;
+    transition: color 0.3s ease; /* Smooth text color transition on hover */
+    cursor: pointer; 
+    text-decoration: solid;
+      }
+  
+  .tab-button:hover {
+    opacity: 50%;
+  }
+  
+  .tab-content {
+    display: none;
+    width: 25%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    color: #e3e3e3;
+    font-family: 'Lexend Zetta', sans-serif; /* Add your desired font-family */
+    font-size: 1.25vw; /* Add your desired font size */
+    border: none;
+    box-shadow: 0px 0px 5px #3b3b3b;
+    background-color: rgba(255,255,255,0.675);
+  }
+
+  .text-box {
+    flex: 1;
+    text-align: center; /* Center the text inside the tabs */
+    
+  }
+
+  /* CSS */
+.tab-button.active {
+  color: #000;
+  text-decoration: underline;
+}
+
+a { color:#1c1c1c }
+
+body{
+    background-size: cover;
+    background-position: center top;
+    background-repeat: repeat;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(../images/log.jpg);
+}
+
+.index-container {
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    margin: 25px;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+
+.index-text {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: #ffffff; /* Default text color */
+    font-family: 'Lexend Zetta', sans-serif; /* Add your desired font-family */
+    font-size: 2.5vw; /* Add your desired font size */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo{
+  width: 75%;
+  height: auto;
+  text-align: center;
+}
+
+.form{
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #444;
+    text-decoration: underline;
+}
+
+label, input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #000;
+    font-size: 20px
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    box-shadow: 0px 0px 5px #3b3b3b;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: #5a5a5a;
+    text-align: center;
+    background-color: rgba(255,255,255,0.25);
+    font-family: 'Lexend Zetta', sans-serif; /* Add your desired font-family */  
+    font-size: 15px;
+}
+
+input[type="submit"] {
+    background-color: #5a5a5a;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    padding: 20px;
+    font-family: 'Lexend Zetta', sans-serif; /* Add your desired font-family */
+    font-size: 1.5vw; /* Add your desired font size */
+}
+
+input[type="submit"]:hover {
+  opacity: 0.75;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Optional: Add some spacing between groups */
+}

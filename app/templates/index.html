@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="../static/css/pagestyle.css">
+    <title>Log-In</title>
+</head>
+<body>     
+    <div class="tab-container">
+        <div class="tab">
+          <button class="tab-button active" onclick="openTab(event, 'tab1')">Login</button>
+        </div>
+        <div class="tab">
+          <button class="tab-button" onclick="openTab(event, 'tab2')">Sign Up</button>
+        </div>
+      </div>
+      <div id="tab1" class="tab-content">
+          <form class = "form" action="#" method="post">
+            {{form2.hidden_tag()}}
+            <img src="../static/images/logo.png" class = "logo">
+            <h2>Login Here</h2>
+            <a>
+            {% for message in get_flashed_messages() %}
+              {{message}}
+            {% endfor %}
+            </a>
+            <label for="username">Username:</label>
+            {{ form1.username(type = "text", placeholder="username") }}       
+            <label for="password">Password:</label>
+            {{ form1.password(type = "password", placeholder="password") }}       
+            {{form1.submit()}}
+        </form>
+      </div>
+      <div id="tab2" class="tab-content">
+          <form class = "form" action="#" method="post">
+            {{form2.hidden_tag()}}
+            <img src="../static/images/logo.png" class = "logo">
+            <h2>Sign-Up Here</h2>
+            <a>
+            {% for message in get_flashed_messages() %}
+              {{message}}
+            {% endfor %}
+            </a>
+            <label for="username">Username:</label>
+            {{ form2.username(type = "text", placeholder="username") }}       
+            <label for="password">Password:</label>
+            {{ form2.password(type = "password", placeholder="password") }}       
+            <label for="password2">Repeat Password:</label>
+            {{ form2.checkpass(type = "password", placeholder="repeat password") }}       
+            {{form2.submit()}}
+          </form>
+      </div>
+
+
+      <script src="../static/js/tab.js"></script>
+
+</body>
+</html>
+        

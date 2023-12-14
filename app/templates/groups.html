@@ -1,0 +1,83 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/groupstyle.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/search.css">
+    <script src="../static/js/groupsearch.js"></script>
+    <script src="../static/js/profile.js"></script>
+    <script src="../static/js/hideelements.js"></script>
+    <script src="../static/js/showgroups.js"></script>
+
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header>Menu</header>
+      <a href="/home/{{user.username}}">
+        <i class="fas fa-user"></i>
+        <span>My Account</span>
+      </a>
+      <a href="/groups/{{user.username}}" class="active">
+        <i class="fas fa-clock"></i>
+        <span>My Groups</span>
+      </a>
+      <a href="/milestones/{{user.username}}">
+        <i class="fas fa-medal"></i>
+        <span>Milestones</span>
+      </a>
+    </div>
+</body>
+<body>
+    <div class="searchBox">
+      <input class="searchInput" id="searchInput" placeholder="Search Groups" oninput="showSuggestions('{{user.username}}')">
+      <button class="searchButton" onclick="performSearch()">
+          <i class="fas fa-search"></i>
+      </button>
+      <div id="suggestions" onmouseleave="hideSuggestions()"></div>
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div class="group-box">
+                <div class="stay">
+                    <h2>My Groups</h2>
+                    {% if groups %}
+                        {% for group in groups %}
+                            <div class="group-container">
+                                <div class="group-name">{{ group.groupName }}</div>
+                                <div class="group-bio">{{ group.groupBio }}</div>
+                                <ul class="group-members">
+                                    <div class="member"><u>Members:</u></div>
+                                    {% for user in group.users %}
+                                        <div class="members">-{{ user.username }}</div>
+                                    {% endfor %}
+                                </ul>
+                                <form method="post" action="{{ url_for('leave_group', groupName=group.groupName, username=user.username) }}">
+                                    <button class="leave" type="submit">Leave Group</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No groups available.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <button class="addGroup", id="addGroupButton" onclick="showAddGroupForm()">Add Group</button>
+            <!-- Content related to My Groups goes here -->
+            <div class="create-group-button" id="addGroupForm" style="display: none;">
+                <form class = "form" action="#" method="post">
+                    {{form1.hidden_tag()}}
+                    <label for="groupName">Group Name:</label>
+                    {{ form1.groupName(class="groupInput", type = "text") }}
+                    <label for="groupBio">Group Bio:</label>
+                    {{ form1.groupBio(class="groupInput", type = "text") }}       
+                    {{form1.submit(class="submit-group")}}
+                    <button class="submit-group" onclick="createGroup()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

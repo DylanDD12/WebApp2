@@ -1,0 +1,42 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profilestyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}">
+  <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/hideelements.js') }}"></script>
+<body>
+  <header>
+    <a href="../../home/{{username}}" class="home-button">
+        <i class="fas fa-home logo"></i>
+    </a>
+  </header>
+  <div class="frame"> 
+    <div class="profile-container">
+      <div class="profile-card" id="profileCard">
+        <div class="profile-info" id="profileInfo">
+          <h2>{{ group.groupName }}</h2>     
+          <h3>{{ group.groupBio }}</h3>
+          {% if group.users %}
+              <div class="group-container">
+                  <ul class="group-members">
+                      <div class="member"><u>Members:</u></div>
+                      {% for user in group.users %}
+                          <div class="members">-{{ user.username }}</div>
+                      {% endfor %}
+                  </ul>
+              </div>
+          {% else %}
+              <p>No members</p>
+          {% endif %}
+          {% if p == 1 %}
+            <form method="post" action="{{ url_for('join_group', groupName=group.groupName, username=user.username) }}">
+              <button type="submit">Join Group</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

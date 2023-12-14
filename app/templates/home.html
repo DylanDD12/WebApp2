@@ -1,0 +1,124 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/homestyle.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/search.css">
+    <script src="../static/js/search.js"></script>
+    <script src="../static/js/hideelements.js"></script>
+</head>
+
+  <body>
+    <input type="hidden" id="username" value="{{ user.username }}" />
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header>Menu</header>
+      <a href="/home/{{username}}" class="active">
+        <i class="fas fa-user"></i>
+        <span>My Account</span>
+      </a>
+      <a href="/groups/{{username}}">
+        <i class="fas fa-clock"></i>
+        <span>My Groups</span>
+      </a>
+      <a href="/milestones/{{username}}">
+        <i class="fas fa-medal"></i>
+        <span>Milestones</span>
+      </a>
+    </div>
+</body>
+<body>
+  <div class="frame">
+    <div class="searchBox">
+      <input class="searchInput" id="searchInput" placeholder="Search Users" oninput="showSuggestions()">
+      <button class="searchButton" onclick="performSearch()">
+          <i class="fas fa-search"></i>
+      </button>
+      <div id="suggestions" onmouseleave="hideSuggestions()"></div>
+    </div>
+    <div class="profile-container">
+      <div class="profile-card" id="profileCard">
+        <form class="upload-image" id="uploadForm" action="" method="post" enctype="multipart/form-data">
+          <button type="button" onclick="triggerFileInput()" class ="edit-pic"><i class="fas fa-edit"></i></button>
+          <input type="file" id="upload" name="file" accept="image/*" style="display: none" onchange="loadImage(event)">
+        </form>
+        <img class="profile-image" src="../static/uploads/{{ user.profile_image }}" alt="Profile Image">
+        </img>
+        <div class="profile-info" id="profileInfo">
+          <h2>@{{ username }}</h2>     
+          <h3>{{user.firstName}} {{user.secondName}}</h3>
+          <h3>Weight: {{user.weight}}kg Height: {{user.height}}cm</h3>
+          <!-- Other user information -->
+          <div class="sbd">
+            <img class="sbd-image" src="../static/images/s.png">
+            <div class="sbd-value">{{user.squat}}kg</div>
+          </div>
+          <div class="sbd">
+            <img class="sbd-image" src="../static/images/b.png">
+            <div class="sbd-value">{{user.bench}}kg</div>
+          </div>
+          <div class="sbd">
+            <img class="sbd-image" src="../static/images/d.png">
+            <div class="sbd-value">{{user.deadlift}}kg</div>
+          </div>
+          <button onclick="hideElements()" class = edit-stats>Update Statistics</button>
+        </div>
+        <div class="update-info" id="updateInfo">
+          <h2>@{{ username }}</h2>    
+          <form class="form" action="#" method="post">
+              {{ form1.hidden_tag() }}
+              <h3>
+                  <label for="firstName">First Name:</label>
+                  {{ form1.firstName(type="text", placeholder=user.firstName) }}
+              </h3>
+              <h3>
+                  <label for="secondName">Second Name:</label>
+                  {{ form1.secondName(type="text", placeholder=user.secondName) }}
+              </h3>
+              <h3>
+                  <label for="weight">Weight:</label>
+                  {{ form1.weight(type="number", min=0, placeholder=user.weight) }}
+              </h3>
+              <h3>
+                  <label for="height">Height:</label>
+                  {{ form1.height(type="number", min=0, placeholder=user.height) }}
+              </h3>
+              <!-- Other user information -->
+              <div class="sbd">
+                  <img class="sbd-image" src="../static/images/s.png">
+                  <div class="sbd-val-container">
+                    <label for="squat">Squat:</label>
+                    {{ form1.squat(type="number", min=0, placeholder=user.squat) }}
+                  </div>
+              </div>
+              <br>
+
+              <div class="sbd">
+                  <img class="sbd-image" src="../static/images/b.png">
+                  <div class="sbd-val-container">
+                    <label for="bench">Bench:</label>
+                    {{ form1.bench(type="number", min=0, placeholder=user.bench) }}
+                  </div>
+              </div>
+              <br>
+
+              <div class="sbd">
+                  <img class="sbd-image" src="../static/images/d.png">
+                  <div class="sbd-val-container">
+                    <label for="squat">Deadlift:</label>
+                    {{ form1.deadlift(type="number", min=0, placeholder=user.deadlift) }}
+                  </div>
+              </div>
+              <div class="center">
+              {{ form1.submit() }}
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../static/js/profile.js"></script>
